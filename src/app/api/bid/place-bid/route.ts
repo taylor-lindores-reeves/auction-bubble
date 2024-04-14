@@ -8,15 +8,14 @@ const requestSchema = z.object({
 });
 
 export const POST = async (req: NextRequest) => {
-	const res = await req.json();
-	const data = requestSchema.safeParse(res);
+	const res = requestSchema.safeParse(await req.json());
 
-	if (!data.success) {
-		return NextResponse.json({ error: data.error }, { status: 400 });
+	if (!res.success) {
+		return NextResponse.json({ error: res.error }, { status: 400 });
 	}
 
 	try {
-		const { slug, amount } = res;
+		const { slug, amount } = res.data;
 		await db.bid.create({
 			data: {
 				amount,
