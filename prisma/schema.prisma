@@ -37,19 +37,22 @@ model Item {
   bidIncrements Int      @map("bid_increments")
   endTime       DateTime @map("end_time")
   bids          Bid[]    @relation("BidsForItem")
+  highestBidId  Int?     @unique @map("highest_bid_id")
+  highestBid    Bid?     @relation("HighestBid", fields: [highestBidId], references: [id])
 
   @@map("items")
 }
 
 // Define the Bid model for bids on items
 model Bid {
-  id        Int      @id @default(autoincrement())
-  bidderId  Int      @map("bidder_id")
-  bidder    User     @relation("BidsPlacedByUser", fields: [bidderId], references: [id])
-  itemId    Int      @map("item_id")
-  item      Item     @relation("BidsForItem", fields: [itemId], references: [id])
-  amount    Int
-  createdAt DateTime @default(now()) @map("created_at")
+  id          Int      @id @default(autoincrement())
+  bidderId    Int      @map("bidder_id")
+  bidder      User     @relation("BidsPlacedByUser", fields: [bidderId], references: [id])
+  itemId      Int      @map("item_id")
+  item        Item     @relation("BidsForItem", fields: [itemId], references: [id])
+  amount      Int
+  createdAt   DateTime @default(now()) @map("created_at")
+  listedItems Item?    @relation("HighestBid")
 
   @@map("bids")
 }
