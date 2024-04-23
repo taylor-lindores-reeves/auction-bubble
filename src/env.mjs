@@ -8,12 +8,12 @@ export const env = createEnv({
 	 */
 	server: {
 		APP_ENV: z.enum(["development", "production"]),
-		DATABASE_URL: z.string().url(),
-		PULSE_API_KEY: z.string().min(1),
+		ACCOUNTSID: z.string().min(1),
+		AUTHTOKEN: z.string().min(1),
 	},
 	runtimeEnv: {
 		APP_ENV: process.env.APP_ENV,
-		DATABASE_URL: process.env.DATABASE_URL,
-		PULSE_API_KEY: process.env.PULSE_API_KEY,
+		ACCOUNTSID: process.env.ACCOUNTSID,
+		AUTHTOKEN: process.env.AUTHTOKEN,
 	},
 });

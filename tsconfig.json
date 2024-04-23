@@ -25,10 +25,10 @@
       }
     ],
     "paths": {
-      "@auction/*": [
+      "@quickalerts/*": [
         "./src/*"
       ],
-      "@auction/env": [
+      "@quickalerts/env": [
         "./src/env.mjs"
       ]
     }

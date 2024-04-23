@@ -1,31 +1,26 @@
 {
-  "name": "new-app",
+  "name": "quickalerts",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev --turbo",
-    "dev:subs": "concurrently \"next dev\" \"npx tsx src/lib/pulse.ts\"",
     "build": "next build",
-    "start": "concurrently \"next start\" \"npx tsx src/lib/pulse.ts\"",
-    "lint": "next lint",
-    "postinstall": "prisma generate"
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
-    "@prisma/client": "^5.12.1",
-    "@prisma/extension-pulse": "1.0.1",
     "@t3-oss/env-nextjs": "^0.9.2",
-    "concurrently": "^8.2.2",
     "next": "14.2.1",
     "react": "^18",
     "react-dom": "^18",
-    "zod": "^3.22.4"
+    "twilio": "^5.0.4"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.7.1",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "postcss": "^8",
-    "prisma": "^5.12.1",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.4.5"
   }
